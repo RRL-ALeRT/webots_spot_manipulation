@@ -1,0 +1,20 @@
+# Move the end effector to a TF frame (e.g. a detected object "Image1", "PlaceBox").
+
+uint8 KEEP_CURRENT=0    # keep the current end-effector orientation
+uint8 TARGET_FRAME=1    # align with the orientation of target_frame
+uint8 FIXED=2           # use `orientation` (expressed in the planning frame)
+
+# Goal
+string target_frame
+geometry_msgs/Vector3 offset            # [m] added to the target position, in the planning frame
+uint8 orientation_mode
+geometry_msgs/Quaternion orientation    # only used with FIXED
+float64 velocity_scaling                # 0 -> server default
+---
+# Result
+bool success
+string message
+geometry_msgs/PoseStamped target_pose
+---
+# Feedback
+string state

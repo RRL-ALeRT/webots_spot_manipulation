@@ -1,0 +1,14 @@
+# Open or close the gripper, or move it to a position.
+
+uint8 OPEN=0
+uint8 CLOSE=1
+uint8 POSITION=2
+
+uint8 command
+float64 position      # [rad] finger_joint, only used with POSITION (0.0 open .. 0.8 closed)
+float64 max_effort    # 0 -> server default
+---
+bool success          # goal reached, or stalled on an object
+bool stalled
+float64 position      # final finger_joint position
+string message

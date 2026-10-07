@@ -1,0 +1,25 @@
+# Move the end effector relative to its current pose.
+#
+# The delta is expressed in `frame_id`:
+#   ""            -> planning frame (default: base_link)
+#   <ee link>     -> tool frame, e.g. "front" moves along the gripper axes
+#   any TF frame  -> axes of that frame
+# Rotation is applied about the end-effector origin, around the axes of `frame_id`.
+
+# Goal
+float64 dx          # [m]
+float64 dy          # [m]
+float64 dz          # [m]
+float64 droll       # [rad]
+float64 dpitch      # [rad]
+float64 dyaw        # [rad]
+string frame_id
+float64 velocity_scaling    # 0 -> server default
+---
+# Result
+bool success
+string message
+geometry_msgs/PoseStamped target_pose
+---
+# Feedback
+string state

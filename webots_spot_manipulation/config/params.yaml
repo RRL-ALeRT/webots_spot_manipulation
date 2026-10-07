@@ -1,0 +1,30 @@
+manipulator_action_server:
+  ros__parameters:
+    # Kinova Gen3 on Spot (webots_spot/resource/gen3.srdf)
+    planning_group: manipulator
+    planning_frame: base_link
+    ee_link: end_effector_link
+    joint_names:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+    pipeline_id: ''           # '' -> default pipeline of move_group (pilz)
+    planner_id: PTP           # pilz needs it explicitly: PTP (joint space), LIN (straight line), CIRC
+    velocity_scaling: 0.1
+    acceleration_scaling: 0.1
+    planning_time: 5.0
+    planning_attempts: 10
+    ik_timeout: 2.0
+    avoid_collisions: true
+
+gripper_server:
+  ros__parameters:
+    # Robotiq 2F on the Gen3 (webots_spot/resource/moveit_controllers.yaml)
+    controller_action: /robotiq_gripper_controller/gripper_cmd
+    open_position: 0.0        # finger_joint, "open" state in gen3.srdf
+    close_position: 0.6899    # finger_joint, "close" state in gen3.srdf
+    max_effort: 0.0           # 0 -> no effort limit
+    timeout: 5.0
